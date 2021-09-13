@@ -15,10 +15,11 @@ sorted_task_list <-
             priority == "high" ~ 3,
             TRUE ~ 0
         ),
+        entry_date_mdy = mdy(entry_date),
         date_adjustment = case_when(
-            today %m-% months(2) < entry_date ~ 1,
-            today %m-% months(4) < entry_date ~ 2,
-            today %m-% months(6) < entry_date ~ 3,
+            today %m-% months(2) < entry_date_mdy ~ 1,
+            today %m-% months(4) < entry_date_mdy ~ 2,
+            today %m-% months(6) < entry_date_mdy ~ 3,
             TRUE ~ 0
         ),
         status_adjustment = case_when(
